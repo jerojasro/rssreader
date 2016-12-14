@@ -43,7 +43,7 @@
                 <a class="navbar-brand" href="{{ url_for('frontend.index') }}">RSS Reader </a>
                 <!-- <p class="navbar-text pull-right"> -->
                 <ul class="nav navbar-nav pull-right">
-                    {% if current_user.is_authenticated() %}
+                    {% if current_user.is_authenticated %}
                     <li>
                         <p class="navbar-text">
                         <i class="icon-user icon-white"></i> {{ current_user.login }}
