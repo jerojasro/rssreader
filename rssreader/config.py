@@ -15,7 +15,7 @@ class BaseConfig(object):
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost:5432/rssreader'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///bla.sqlite3'
     CSRF_ENABLED = False
 
 class ProductionConfig(BaseConfig):
