@@ -1,2 +1,2 @@
 #-*- coding: utf-8 -*-
-from views import frontend_blueprint
+from .views import frontend_blueprint

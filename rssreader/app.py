@@ -4,9 +4,9 @@ from flask import Flask, json
 from .config import config
 from .database import db
 from .extensions import login_manager
-from feed import feed_blueprint
-from frontend import frontend_blueprint
-from user import user_blueprint, User
+from .feed import feed_blueprint
+from .frontend import frontend_blueprint
+from .user import user_blueprint, User
 
 
 blueprints = (frontend_blueprint, user_blueprint, feed_blueprint,)
@@ -14,7 +14,7 @@ blueprints = (frontend_blueprint, user_blueprint, feed_blueprint,)
 
 class AdvancedJSONEncoder(json.JSONEncoder):
     def default(self, o):
-        if isinstance(o, unicode):
+        if isinstance(o, str):
             return o
         if hasattr(o, 'isoformat'):
             return o.isoformat()
@@ -26,7 +26,7 @@ class AdvancedJSONEncoder(json.JSONEncoder):
             field_names = (basic_fields | additional_fields) - private_fields
             for field_name in field_names:
                 obj = getattr(o, field_name)
-                if isinstance(obj, unicode):
+                if isinstance(obj, str):
                     data = obj
                 else:
                     data = json.dumps(obj)

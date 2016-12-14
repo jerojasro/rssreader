@@ -47,7 +47,7 @@ class DatabaseAbstraction(object):
         impl = DateTime
 
         def process_bind_param(self, value, dialect):
-            if isinstance(value, basestring):
+            if isinstance(value, (bytes, str)):
                 try:
                     value = iso8601.parse_date(value)
                 except:

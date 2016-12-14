@@ -46,13 +46,13 @@ def import_opml(user_id, opml_url=None, data=None):
     outline = outline or []
     for entry in outline:
         url = entry.xmlUrl
-        print url
+        print(url)
         subscribe_to_url(url, user_id)
 
 def enqueue(func, *args):
     q = Queue(connection=Redis(**config.REDIS_CONNECTION_OPTIONS))
     try:
         job = q.enqueue(func, *args)
-        print job
-    except redis.exceptions.ConnectionError, e:
+        print(job)
+    except redis.exceptions.ConnectionError as e:
         logging.error('Redis connection error: %s', e)
